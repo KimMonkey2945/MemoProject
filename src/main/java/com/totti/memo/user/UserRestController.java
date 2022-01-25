@@ -66,7 +66,7 @@ public class UserRestController {
 			//id, loginId, name 총세가지를 session에 저장
 			session.setAttribute("userId", user.getId()); //앞에는 key 내마음대로 정하면 됨..
 			session.setAttribute("userLoginId", user.getLoginId()); //앞에는 key 내마음대로 정하면 됨..
-			session.setAttribute("userId", user.getName()); //앞에는 key 내마음대로 정하면 됨..
+			session.setAttribute("userName", user.getName()); //앞에는 key 내마음대로 정하면 됨..
 			
 		}else {
 			//로그인 실패

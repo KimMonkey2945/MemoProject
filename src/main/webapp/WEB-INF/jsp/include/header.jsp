@@ -9,7 +9,7 @@
 	<!-- 세션에 userId값이 존재하는지??? -->
 	<c:choose>
 		<c:when test="${not empty userId }">
-			<div class="ml-3">${userName }님 <a href="/user/sign_out">로그아웃</a></div>
+			<div class="mr-3">${userName }님 <a href="/user/sign_out">로그아웃</a></div>
 		</c:when>
 		<c:otherwise>
 			<div class="mr-3"><a href="/user/signin_view">로그인</a></div>

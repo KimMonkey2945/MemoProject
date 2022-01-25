@@ -25,7 +25,7 @@ public class UserBO {
 	
 	public User getUser(String loginId, String password) {
 		
-		String encPassword = EncryptUtils.md5(password);
+		//String encPassword = EncryptUtils.md5(password);
 		
 		//return userDAO.selectUser(loginId, encPassword);
 		return userDAO.selectUser(loginId, EncryptUtils.md5(password));
