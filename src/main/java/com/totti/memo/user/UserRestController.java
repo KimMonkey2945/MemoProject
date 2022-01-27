@@ -62,12 +62,13 @@ public class UserRestController {
 			
 			//session에 값을 저장하는 과정...
 			HttpSession session = request.getSession();
-			
+			//session은 클라이언트와 서버가 1:1매칭을 하는것...
 			//id, loginId, name 총세가지를 session에 저장
 			session.setAttribute("userId", user.getId()); //앞에는 key 내마음대로 정하면 됨..
 			session.setAttribute("userLoginId", user.getLoginId()); //앞에는 key 내마음대로 정하면 됨..
 			session.setAttribute("userName", user.getName()); //앞에는 key 내마음대로 정하면 됨..
-			
+			//프로필사진에 대한 url도 저장 하고 항시 띄워놓을 수 있음... 로그인 과정은 session에 값을 저장하는
+			//단계라고 생각하면됨....
 		}else {
 			//로그인 실패
 			result.put("result", "fail");
