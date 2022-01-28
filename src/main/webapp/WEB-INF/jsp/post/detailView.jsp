@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
 
-<title>메모입력</title>
+<title>메모보기</title>
 </head>
 <body>
 
@@ -39,13 +39,16 @@
 				<h1 class="text-center">메모 입력</h1>
 				<div class="d-flex align-items-center mt-3">
 					<label class="mr-3">제목 : </label>
-					<input type="text" class="form-control col-11" id="titleInput">
+					<input type="text" class="form-control col-11" id="titleInput" value="${post.subject }">
 				</div>
-				<textarea class="form-control mt-3" rows="5" id="contentInput"></textarea>
-				<input class="mt-3" type="file" id="fileInput">
+				<textarea class="form-control mt-3" rows="5" id="contentInput">${post.content }</textarea>
+				
 				<div class="d-flex justify-content-between mt-3">
-					<a href="/post/list_view" class="btn btn-info">목록으로</a>
-					<button class="btn btn-success" type="button" id="saveBtn">저장</button>
+					<div>
+						<a href="/post/list_view" class="btn btn-info">목록으로</a>
+						<button type="button" class="btn btn-danger" id="deleteBtn" data-post-id="${post.id }">삭제</button>
+					</div>
+					<button class="btn btn-success" type="button" id="saveBtn">수정</button>
 				</div>
 				
 			</div>
@@ -54,71 +57,50 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 
+
 	<script>
 		$(document).ready(function(){
-			$("#saveBtn").on("click", function(){
-				let title = $("#titleInput").val();
-				let content = $("#contentInput").val().trim();
-				
-				if(title == ""){
-					alert("제목을 입력하세요");
-					return;
-				}
-				if(content == ""){
-					alert("내용을 입력하세요");
-					return;
-				}
-				
-				//파일을 다루는 것은 그냥 사용법임.... 외워그냥
-				
-				var formData = new FormData();
-				formData.append("subject", title);
-				formData.append("content", content) // 파라미터 전달법을 바꾼것임....
-				formData.append("file"), $("#fileInput")[0].files[0]); //배열 형태로.....
+			$("#deleteBtn").("click", function(){
 				
 				
-			$.ajax({
-				type:"post",
-				url:"/post/create",
-				data:formData,
-				enctype:"multipart/form-data", // 파일 업로드 필수
-				processData:false,// 파일 업로드 필수
-				contentType:false,// 파일 업로드 필수  일반적인 파라미터 전달이 아니라 라고 생각하면됨!!!!!!
+				
+				var postId = $(this).data("post-id");
 				
 				
-				//data:{"subject":title, "content":content},
-				success:function(data){
-					if(data.result == "success"){
-						location.href="/post/list_view";
-					}else{
-						alert("글쓰기 실패");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete",
+					// 특정태그에 값을 넣어놓으면 그값을 어떻게든 가져올 수 있다. 위의 딜릿버튼 주의해서 보기
+					data:{"postId":postId},
+					success:function(data){
+						if(data.result == "success"){
+							location.href="/post/list_view"
+						}else{
+							alert("삭제실패");
+						}
+					},
+					error:function(){
+						alert("에러발생")
 					}
-				},
-				error:function(){
-					alert("에러발생");
-				}
-			});
-				
+				});
 			});
 		});
 	
 	
+	
 	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
