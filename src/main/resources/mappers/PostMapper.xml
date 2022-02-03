@@ -41,7 +41,7 @@
  	
  	</select>
  	
- 	<select id="selectPost" resultType="com.totti.memo.user.post.model.Post" parameterType="int">
+ 	<select id="selectPost" resultType="com.totti.memo.user.post.model.Post">
  		SELECT 
 	 		`id`
 	 		,`userId`
@@ -53,27 +53,13 @@
  		FROM
  			`post`
  		WHERE	
- 			
- 	
- 	
+ 			`id` = #{postId}
  	</select>
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
  	
   	
   	<delete id="deletePost" parameterType="int">
   		DELETE FROM `post`
-  		WHERE `postId` = #{postId}
+  		WHERE `id` = #{postId}
   	</delete>
  
  

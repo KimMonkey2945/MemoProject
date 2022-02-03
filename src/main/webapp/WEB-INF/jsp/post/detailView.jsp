@@ -60,11 +60,11 @@
 
 	<script>
 		$(document).ready(function(){
-			$("#deleteBtn").("click", function(){
+			$("#deleteBtn").on("click", function(){
 				
 				
 				
-				var postId = $(this).data("post-id");
+				let postId = $(this).data("post-id");
 				
 				
 				

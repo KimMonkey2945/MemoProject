@@ -24,7 +24,7 @@
  	</insert>
  
  
- 	<select id="selectUser" resultType="com.totti.memo.user.model.User">
+ 	<select id="selectUser" parameterType="map" resultType="com.totti.memo.user.model.User">
  		SELECT
  			`id`
  			,`loginId`
@@ -33,7 +33,6 @@
  			,`email`
  			,`createdAt`
  			,`updatedAt`
- 	
  		FROM
  			`user`
  		WHERE

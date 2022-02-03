@@ -73,8 +73,9 @@
 				
 				var formData = new FormData();
 				formData.append("subject", title);
-				formData.append("content", content) // 파라미터 전달법을 바꾼것임....
-				formData.append("file"), $("#fileInput")[0].files[0]); //배열 형태로.....
+				formData.append("content", content); // 파라미터 전달법을 바꾼것임....
+				formData.append("file", $("#fileInput")[0].files[0]); 
+				//배열 형태로.....
 				
 				
 			$.ajax({
@@ -84,20 +85,19 @@
 				enctype:"multipart/form-data", // 파일 업로드 필수
 				processData:false,// 파일 업로드 필수
 				contentType:false,// 파일 업로드 필수  일반적인 파라미터 전달이 아니라 라고 생각하면됨!!!!!!
-				
-				
 				//data:{"subject":title, "content":content},
 				success:function(data){
 					if(data.result == "success"){
 						location.href="/post/list_view";
-					}else{
+					}
+					else{
 						alert("글쓰기 실패");
 					}
 				},
 				error:function(){
 					alert("에러발생");
 				}
-			});
+			})
 				
 			});
 		});
@@ -105,21 +105,6 @@
 	
 	</script>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 </body>
 </html>

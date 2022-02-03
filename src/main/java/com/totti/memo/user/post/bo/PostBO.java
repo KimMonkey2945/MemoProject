@@ -18,9 +18,6 @@ public class PostBO {
 	public int addPost(int userId, String subject, String content, MultipartFile file) {
 		//여기서 파일을 저장하는 로직을 수행 컨트롤러에서 하는것 x 클래스 따로 만들어서 사용... 암호화랑 비슷
 		
-		
-		
-		
 		return postDAO.insertPost(userId, subject, content);
 	}
 
