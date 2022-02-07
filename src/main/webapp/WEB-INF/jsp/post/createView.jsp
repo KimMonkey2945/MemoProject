@@ -54,7 +54,11 @@
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 
+
+
 	<script>
+	
+		//this라는 개념을 좀 알아보기...
 		$(document).ready(function(){
 			$("#saveBtn").on("click", function(){
 				let title = $("#titleInput").val();
