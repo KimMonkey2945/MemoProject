@@ -27,7 +27,7 @@ public class PostRestController {
 	public Map<String,String> create(
 			@RequestParam("subject") String subject,
 			@RequestParam("content") String content,
-			@RequestParam("file") MultipartFile file,
+			@RequestParam(value = "file", required = false) MultipartFile file,
 			HttpServletRequest request){
 		
 		// 세션에 로그인에 성공하면 정보를 저장하므로 세션을 가져온다
